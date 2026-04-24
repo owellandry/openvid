@@ -2,7 +2,7 @@ import { BentoDemos } from "@/app/components/ui/BentoDemos";
 import DonationCard from "@/app/components/ui/DonationCard";
 import EditorPreview from "@/app/components/ui/EditorPreview";
 import Hero from "@/app/components/ui/Hero";
-import { HeroScrollMask } from "@/app/components/ui/HeroScrollMask";
+import FeaturesStrip from "@/app/components/ui/FeaturesStrip";
 import InteractiveRecordingSteps from "@/app/components/ui/RecordingSteps";
 
 export default function Home() {
@@ -17,12 +17,10 @@ export default function Home() {
             <Hero />
           </div>
         </section>
-
-        <section className="w-full">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-250 h-[150%] rounded-[100%] blur-3xl pointer-events-none -z-10"></div>
-          <HeroScrollMask />
-        </section>
       </div>
+
+      <FeaturesStrip />
+
       <section className="w-full py-16">
         <div className="max-w-6xl mx-auto px-6">
           <InteractiveRecordingSteps />

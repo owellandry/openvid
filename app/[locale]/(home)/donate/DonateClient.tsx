@@ -47,13 +47,27 @@ export default function DonateClient({ methods, defaultMethod }: DonateClientPro
 
           <div className="flex flex-col">
             {methods.map((method) => (
-              <div key={method.id} className="border-b border-white/5 last:border-0">
+              <div
+                key={method.id}
+                className={[
+                  "border-b border-white/5 last:border-0",
+                  selected === method.id ? "bg-amber-500/4" : "",
+                ].join(" ")}
+              >
                 <button 
                   onClick={() => setSelected(selected === method.id ? null : method.id)} 
-                  className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-white/5 group"
+                  className={[
+                    "w-full flex items-center justify-between p-5 text-left transition-colors group",
+                    selected === method.id ? "bg-amber-500/6" : "hover:bg-white/5",
+                  ].join(" ")}
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-9 h-9 rounded bg-[#1C1C1F] border border-white/10 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-white/20 transition-colors">
+                    <div
+                      className={[
+                        "w-9 h-9 rounded bg-[#1C1C1F] border flex items-center justify-center shrink-0 overflow-hidden transition-colors",
+                        selected === method.id ? "border-amber-500/40" : "border-white/10 group-hover:border-white/20",
+                      ].join(" ")}
+                    >
                       {method.image ? (
                         <img src={method.image} alt={method.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                       ) : (

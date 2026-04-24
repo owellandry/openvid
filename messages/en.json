@@ -8,7 +8,8 @@
     "logout": "Sign out",
     "loggingOut": "Signing out...",
     "menu": "Menu",
-    "screen": "Record"
+    "screen": "Record",
+    "upload": "Upload video"
   },
   "footer": {
     "description": "Modern application for <recording>screen recording</recording> and <editing>video editing</editing>. Designed for the web. No installations, no waiting, directly in your browser.",
@@ -186,8 +187,8 @@
     }
   },
   "hero": {
-    "title": "Create demos and <screen>screen</screen>",
-    "titleHighlight": "in 4K quality  ",
+    "title": "Create professional demos",
+    "titleHighlight": "in 4K, right in your browser",
     "description": "Add smooth zooms, mockups, customize backgrounds, camera, audio, elements, and export professional demos.",
     "uploadButton": "Upload video",
     "uploadButtonDragging": "Drop your video here",

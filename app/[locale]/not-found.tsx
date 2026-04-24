@@ -40,7 +40,7 @@ export default function NotFound() {
           {t('backHome')}
         </Link>
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.08)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.10)_0%,transparent_60%)] pointer-events-none" />
 
       </div>
       <Footer/>

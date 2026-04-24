@@ -78,7 +78,7 @@ export default function InteractiveRecordingSteps() {
       actionButton: (
         <div className="flex flex-col items-center gap-4 w-full">
           <Button
-            variant="outline"
+            variant="accent"
             size="xl"
             className={`text-lg relative overflow-hidden ${isRecording ? 'border-red-500/50 text-red-400' : ''} ${!isIdle ? 'opacity-70 cursor-not-allowed' : ''}`}
             onClick={handleStartRecording}
@@ -296,10 +296,10 @@ export default function InteractiveRecordingSteps() {
 
   return (
     <div id="docs" className="w-full max-w-7xl mx-auto px-0 sm:px-6 py-6 sm:py-24 text-left">
-      <div className="max-w-3xl mx-auto text-center mb-32">
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 leading-tight drop-shadow-[1.2px_1.2px_100.2px_rgba(183,203,248,1)]">
+      <div className="max-w-3xl mx-auto text-center mb-24 sm:mb-28">
+        <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter text-white mb-5 leading-tight">
           {t('title')} <br />
-          <span className="bg-linear-to-r from-[#003780] to-white bg-clip-text text-transparent">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-neutral-200 via-neutral-400 to-amber-300">
             {t('title2')}
           </span>
         </h2>

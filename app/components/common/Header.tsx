@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Link } from "@/navigation";
@@ -12,14 +12,18 @@ import { Button } from "@/components/ui/button";
 import { useRecording } from "@/hooks/RecordingContext";
 import RecordingSetupDialog from "../ui/RecordingSetupDialog";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import GitHubStars from "@/components/ui/GitHubStars";
+import { saveUploadedVideo } from "@/lib/video-upload-cache";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const t = useTranslations('header');
   const tRecording = useTranslations('recording.steps');
+  const router = useRouter();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const videoInputRef = useRef<HTMLInputElement>(null);
+  const [isUploadingVideo, setIsUploadingVideo] = useState(false);
 
   const { startCountdown, stopRecording, isIdle, isRecording, isCountdown, isProcessing } = useRecording();
   const [setupDialogOpen, setSetupDialogOpen] = useState(false);
@@ -39,6 +43,28 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleUploadClick = () => {
+    if (isUploadingVideo) return;
+    videoInputRef.current?.click();
+  };
+
+  const handleVideoFile = useCallback(async (file: File) => {
+    if (!file.type.startsWith("video/")) return;
+    setIsUploadingVideo(true);
+    try {
+      await saveUploadedVideo(file);
+      router.push("/editor?mode=video");
+    } finally {
+      setIsUploadingVideo(false);
+    }
+  }, [router]);
+
+  const handleVideoFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) handleVideoFile(file);
+    e.target.value = "";
+  };
 
   const handleHeaderAction = () => {
     if (isRecording) {
@@ -87,9 +113,29 @@ export default function Header() {
 
           <div className="flex items-center gap-3 sm:gap-6">
             <Button
+              variant="accent"
+              onClick={handleUploadClick}
+              disabled={isUploadingVideo}
+              className="hidden sm:flex"
+            >
+              {isUploadingVideo ? <Icon icon="eos-icons:loading" className="w-4 h-4 animate-spin" /> : <Icon icon="mage:video-upload" className="w-4 h-4" />}
+              <span className="text-xs font-bold tracking-tight">
+                {t('upload')}
+              </span>
+            </Button>
+
+            <input
+              ref={videoInputRef}
+              type="file"
+              accept="video/mp4,video/webm,video/quicktime,video/x-matroska"
+              className="hidden"
+              onChange={handleVideoFileChange}
+            />
+
+            <Button
               variant="outline"
               onClick={handleHeaderAction}
-              disabled={isCountdown || isProcessing}
+              disabled={!isIdle || isCountdown || isProcessing}
               className={cn(
                 "transition-all hidden sm:flex",
                 isRecording && "border-red-500/50 text-red-400 hover:bg-red-500/5"
