@@ -1,7 +1,7 @@
-import { updateSession } from "@/utils/supabase/middleware";
 import { type NextRequest } from "next/server";
 import createIntlMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './i18n';
+import { updateSession } from "@/utils/supabase/middleware";
 
 const intlMiddleware = createIntlMiddleware({
   locales,
@@ -16,7 +16,7 @@ export default async function proxy(request: NextRequest) {
   const intlResponse = intlMiddleware(request);
   intlResponse.headers.set('x-user-country', country);
 
-  const supabaseResponse = await updateSession(request);
+   const supabaseResponse = await updateSession(request);
   supabaseResponse.cookies.getAll().forEach((cookie) => {
     intlResponse.cookies.set(cookie.name, cookie.value);
   });
