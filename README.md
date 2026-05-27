@@ -11,7 +11,7 @@
 
   **Record your screen or upload a video, add smooth zooms, device mockups, 3D effects, and custom backgrounds - export a cinematic demo ready to share.**
 
-  [Live Demo](https://openvid.dev) • [Features](#-features) • [Installation](#-quick-start) • [Discord Community](https://discord.gg/kM5FtydGQ)
+  [Live Demo](https://openvid.dev) • [Features](#-features) • [Installation](#-quick-start) • [Discord Community](https://discord.gg/aBu5A2tBXb)
 </div>
 
 > **The following demo was fully recorded and edited using openvid.**
@@ -163,8 +163,8 @@ Open [http://localhost:3000](http://localhost:3000)
 ---
 
 ## 💬 Community
-¡Contributions are welcome! Join our **Discord** to collaborate:
-[Join Discord](https://discord.gg/f8KEyceS)
+
+¡Contributions are welcome! Join our **Discord** to collaborate: [![Discord](https://img.shields.io/badge/Discord-Join%20Chat-5865F2?logo=discord&logoColor=white)](https://discord.gg/aBu5A2tBXb)
 
 ## Contributors
 <a href="https://github.com/CristianOlivera1/openvid/graphs/contributors">
