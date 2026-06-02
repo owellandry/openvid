@@ -20,7 +20,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const { startCountdown, stopRecording, isIdle, isRecording, isCountdown, isProcessing } = useRecording();
+  const { startCountdown, stopRecording, isRecording, isCountdown, isProcessing } = useRecording();
   const [setupDialogOpen, setSetupDialogOpen] = useState(false);
   const [showMobileAlert, setShowMobileAlert] = useState(false);
 
@@ -73,7 +73,7 @@ export default function Header() {
         isScrolled ? "border-b border-white/10 bg-[#050505]/80 backdrop-blur-xl py-0" : "bg-transparent border-transparent py-2"
       )}
       >
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between">
+        <div className="max-w-6xl px-6 xl:px-0 mx-auto h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group" aria-label="OpenVid - Go to home">
             <Image src="/svg/logo-openvid.svg" alt="" aria-hidden="true" width={50} height={50} style={{ height: "auto" }} />
             <Image src="/svg/openvid.svg" alt="OpenVid" width={100} height={50} className="hidden sm:flex" style={{ height: "auto" }} />

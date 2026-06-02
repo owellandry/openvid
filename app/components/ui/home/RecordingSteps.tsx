@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import StepRow from "./StepRow";
 import { useRecording } from "@/hooks/RecordingContext";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import RecordingSetupDialog from "./RecordingSetupDialog";
+import RecordingSetupDialog from "../RecordingSetupDialog";
 import { useTranslations } from "next-intl";
 
 export default function InteractiveRecordingSteps() {
@@ -103,19 +103,19 @@ export default function InteractiveRecordingSteps() {
           <div className="absolute inset-0 bg-[radial-linear(#ffffff22_1px,transparent_1px)] [bg-size:16px_16px] opacity-10"></div>
           <div className="bg-[#292A2D] rounded-xl w-full max-w-full shadow-2xl relative z-10 flex flex-col font-sans border border-white/5 origin-center">
             <div className="flex justify-between px-2 sm:px-4 pt-2 sm:pt-3 border-b border-white/10 text-[9px] sm:text-[11px] font-medium">
-              <div className="pb-2 text-neutral-400 hover:text-neutral-200 cursor-pointer flex-1 text-center transition-colors truncate px-1">
+              <div className="pb-2 text-neutral-400 hover:text-neutral-200 flex-1 text-center transition-colors truncate px-1">
                 {t('step1.visual.browserTab')}
               </div>
               <div className="pb-2 text-[#C0B4F0] border-b-2 border-[#C0B4F0] flex-1 text-center truncate px-1">
                 {t('step1.visual.window')}
               </div>
-              <div className="pb-2 text-neutral-400 hover:text-neutral-200 cursor-pointer flex-1 text-center transition-colors truncate px-1 hidden sm:block">
+              <div className="pb-2 text-neutral-400 hover:text-neutral-200 flex-1 text-center transition-colors truncate px-1 hidden sm:block">
                 {t('step1.visual.fullscreen')}
               </div>
             </div>
             <div className="p-3 sm:p-5 flex justify-center gap-3 sm:gap-4 h-auto sm:h-37.5">
               <div className="w-24 sm:w-32.5 flex flex-col gap-2">
-                <div className="w-full h-14 sm:h-18.75 bg-[#141414] rounded-md border-2 border-[#C0B4F0] overflow-hidden shadow-inner relative transition-colors cursor-pointer">
+                <div className="w-full h-14 sm:h-18.75 bg-[#141414] rounded-md border-2 border-[#C0B4F0] overflow-hidden shadow-inner relative transition-colors">
                   <div className="absolute top-1 sm:top-2 left-1 sm:left-2 w-full h-full bg-neutral-800 rounded-t-md border border-white/5"></div>
                 </div>
                 <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] text-neutral-200">
@@ -124,7 +124,7 @@ export default function InteractiveRecordingSteps() {
                 </div>
               </div>
               <div className="w-24 sm:w-32.5 flex flex-col gap-2">
-                <div className="w-full h-14 sm:h-18.75 bg-[#141414] rounded-md border border-gray-500 overflow-hidden shadow-inner relative cursor-pointer">
+                <div className="w-full h-14 sm:h-18.75 bg-[#141414] rounded-md border border-gray-500 overflow-hidden shadow-inner relative">
                   <div className="absolute top-1 left-1 w-[95%] h-[90%] bg-[#1E1E1E] rounded border border-white/5 flex flex-col">
                     <div className="h-1.5 sm:h-2 border-b border-white/5"></div>
                     <div className="p-1 sm:p-1.5 space-y-1">
@@ -152,10 +152,10 @@ export default function InteractiveRecordingSteps() {
                 </div>
               </div>
               <div className="flex w-full sm:w-auto justify-end gap-2 sm:gap-3">
-                <button className="flex-1 sm:flex-none px-4 sm:px-5 py-1.5 bg-[#3C3D3F] text-neutral-400 rounded-full text-[10px] sm:text-[11px] font-medium cursor-not-allowed">
+                <button className="flex-1 sm:flex-none px-4 sm:px-5 py-1.5 bg-[#3C3D3F] text-neutral-400 rounded-full text-[10px] sm:text-[11px] font-medium cursor-default!">
                   {t('step1.visual.share')}
                 </button>
-                <button className="flex-1 sm:flex-none px-4 sm:px-5 py-1.5 bg-[#292A2D] text-white rounded-full text-[10px] sm:text-[11px] font-medium border border-[#C0B4F0] ring-1 ring-[#C0B4F0] ring-offset-2 ring-offset-[#292A2D] outline-none">
+                <button className="flex-1 sm:flex-none px-4 sm:px-5 py-1.5 bg-[#292A2D] text-white rounded-full text-[10px] sm:text-[11px] font-medium border border-[#C0B4F0] ring-1 ring-[#C0B4F0] ring-offset-2 ring-offset-[#292A2D] outline-none cursor-default!">
                   {t('step1.visual.cancel')}
                 </button>
               </div>
@@ -189,7 +189,7 @@ export default function InteractiveRecordingSteps() {
               <button className="bg-[#B7BEF8] hover:bg-[#A6AEF7] text-[#141414] text-[10px] sm:text-[11px] font-medium px-3 sm:px-4 py-1.5 rounded-full transition-colors whitespace-nowrap cursor-default!">
                 {t('step2.visual.stop')}
               </button>
-              <div className="relative group/btn cursor-pointer">
+              <div className="relative group/btn">
                 <span className="text-[#8AB4F8] text-[10px] sm:text-[11px] font-medium hover:text-white transition-colors">
                   {t('step2.visual.hide')}
                 </span>
@@ -297,9 +297,9 @@ export default function InteractiveRecordingSteps() {
   ];
 
   return (
-    <div id="docs" className="w-full max-w-7xl mx-auto px-0 sm:px-6 py-6 sm:py-24 text-left">
+    <div id="docs" className="w-full max-w-7xl mx-auto px-0 py-6 sm:py-24 text-left">
       <div className="max-w-3xl mx-auto text-center mb-32">
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 leading-tight drop-shadow-[1.2px_1.2px_100.2px_rgba(183,203,248,1)]">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 leading-tight drop-shadow-[1.2px_1.2px_12px_rgba(183,203,248,0.4)]">
           {t('title')} <br />
           <span className="bg-linear-to-r from-[#003780] to-white bg-clip-text text-transparent">
             {t('title2')}

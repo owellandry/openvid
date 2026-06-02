@@ -24,7 +24,6 @@ export default function EditorPreview() {
   }, []);
   return (
     <div className="relative max-w-6xl mx-auto mt-30 sm:mt-0 isolate">
-      <div className="hidden sm:block absolute top-0 left-1/2 -translate-x-1/2 w-140 h-80 rounded-full bg-[#0095ED]/40 blur-[120px] pointer-events-none -z-10" />
       <div className="hidden sm:block absolute top-20 left-1/3 w-60 h-60 rounded-full bg-blue-600/20 blur-[80px] pointer-events-none -z-10" />
       <div className="absolute top-0 right-0 md:-right-10 z-30 pointer-events-none">
         <img

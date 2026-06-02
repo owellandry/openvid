@@ -46,3 +46,6 @@ supabase-setup.sql
 BACKEND_SPEC.md
 BACKEND_TESTING.md
 /openvid-back
+.agents
+.github
+skills-lock.json

@@ -257,6 +257,11 @@ button {
   border-radius: 50px;
 }
 
+.squircle-element-2xl {
+  corner-shape: squircle;
+  border-radius: 70px;
+}
+
 .hero-perspective-container {
   perspective: 1500px;
 }
@@ -310,17 +315,42 @@ button {
 }
 
 @keyframes float-glow {
-  0%, 100% { --glow-x: 45%; filter: blur(100px) opacity(0.8); }
-  50% { --glow-x: 55%; filter: blur(130px) opacity(1); }
+
+  0%,
+  100% {
+    --glow-x: 45%;
+    filter: blur(100px) opacity(0.8);
+  }
+
+  50% {
+    --glow-x: 55%;
+    filter: blur(130px) opacity(1);
+  }
 }
 
 .pro-glow {
-  background: radial-gradient(
-    circle at var(--glow-x) 50%, 
-    rgba(6, 182, 212, 0.5) 0%,
-    rgba(6, 182, 212, 0.1) 40%,
-    rgba(6, 182, 212, 0) 70% 
-  );
+  background: radial-gradient(circle at var(--glow-x) 50%,
+      rgba(6, 182, 212, 0.5) 0%,
+      rgba(6, 182, 212, 0.1) 40%,
+      rgba(6, 182, 212, 0) 70%);
   animation: float-glow 10s ease-in-out infinite;
-  mix-blend-mode: screen; 
+  mix-blend-mode: screen;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.4s;
 }

@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Icon } from "@iconify/react";
 import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -27,22 +26,6 @@ export function HeroScrollMask() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
-
-  const [featureIndex, setFeatureIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const features = t.raw("features") as string[];
-
-  useEffect(() => {
-    if (!features?.length) return;
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setFeatureIndex((prev) => (prev + 1) % features.length);
-        setIsTransitioning(false);
-      }, 400);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [features]);
 
   useEffect(() => {
     const mm = gsap.matchMedia();
@@ -154,36 +137,6 @@ export function HeroScrollMask() {
         </div>
 
         <div className="relative z-10 w-full flex flex-col sm:absolute sm:inset-0 pointer-events-none">
-          <div className="relative w-full h-0 sm:h-full flex justify-center items-center z-30">
-            <div
-              ref={textContainerRef}
-              className="hidden sm:flex absolute top-[8svh] sm:top-2 right-4 sm:right-6 md:top-14 md:right-8 z-40 opacity-100 sm:opacity-0 pointer-events-auto"
-            >
-              <div className="bg-black/40 backdrop-blur-xl border border-white/20 rounded-xl md:rounded-2xl px-2 py-2 md:px-6 md:py-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-end min-w-45 sm:min-w-65 md:min-w-[320px]">
-                <div className="h-4 md:h-6 w-full flex items-center justify-end overflow-hidden px-1">
-                  <h2
-                    className={`text-[12px] sm:text-xl md:text-2xl font-black text-white italic tracking-tighter drop-shadow-[0_8px_8px_rgba(0,0,0,0.5)] uppercase whitespace-nowrap transition-all duration-400 ease-in-out ${
-                      isTransitioning
-                        ? "opacity-0 translate-y-4 skew-y-6"
-                        : "opacity-100 translate-y-0 skew-y-0"
-                    }`}
-                  >
-                    {features?.[featureIndex]}
-                  </h2>
-                </div>
-                <div
-                  className={`h-px md:h-1 bg-linear-to-r from-transparent via-blue-500 to-blue-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)] transition-all duration-500 origin-right ${
-                    isTransitioning ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"
-                  } w-full`}
-                />
-              </div>
-            </div>
-
-            <p className="hidden sm:block absolute bottom-10 z-30 text-white/80 font-semibold text-4xl">
-              <Icon icon="iconoir:mouse-scroll-wheel" aria-hidden="true" />
-            </p>
-          </div>
-
           <h2 className="relative w-full flex flex-col sm:block justify-center items-center pointer-events-none h-auto min-h-[100svh] sm:min-h-0 sm:h-full shrink-0">
             
             <span
